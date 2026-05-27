@@ -13,7 +13,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/makeworld-the-better-one/go-isemoji"
+	"github.com/aleksxor/isemoji"
 )
 
 // Some elements adapted from files in
@@ -98,7 +98,7 @@ func saveEmojiMap(filename string) error {
 		return fmt.Errorf("could not format file: %v", err)
 	}
 
-	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0o644)
 	if err != nil {
 		return fmt.Errorf("could not open file: %v", err)
 	}
