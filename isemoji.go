@@ -9,12 +9,8 @@ const EmojiVersion = "14.0"
 // See the follow document for definitions of fully-qualified and component:
 //	https://www.unicode.org/reports/tr51/#def_qualified_emoji_character
 func IsEmoji(s string) bool {
-	for k, v := range emojis {
-		if s == k && (v[1] == "fully-qualified" || v[1] == "component") {
-			return true
-		}
-	}
-	return false
+	v, ok := emojis[s]
+	return ok && (v[1] == "fully-qualified" || v[1] == "component") 
 }
 
 // IsEmojiNonStrict returns true if the provided string contains one emoji.
@@ -23,12 +19,8 @@ func IsEmoji(s string) bool {
 // See the follow document for definitions of those terms:
 //	https://www.unicode.org/reports/tr51/#def_qualified_emoji_character
 func IsEmojiNonStrict(s string) bool {
-	for k := range emojis {
-		if s == k {
-			return true
-		}
-	}
-	return false
+	_, ok := emojis[s]
+	return ok
 }
 
 // Name returns the Unicode name for the emoji.
